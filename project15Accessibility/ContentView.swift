@@ -27,15 +27,27 @@ struct ContentView: View {
   @State private var selectedPicture = Int.random(in: 0...3)
   
   var body: some View {
-    Image(pictures[selectedPicture])
-    .resizable()
-    .scaledToFit()
-      .onTapGesture {
-        self.selectedPicture = Int.random(in: 0...3)
+//    Image(pictures[selectedPicture])
+//    .resizable()
+//    .scaledToFit()
+//      .onTapGesture {
+//        self.selectedPicture = Int.random(in: 0...3)
+//    }
+//    .accessibility(label: Text(labels[selectedPicture]))
+//    .accessibility(removeTraits: .isImage)
+//    .accessibility(addTraits: .isButton)
+    
+    VStack {
+        Text("Your score is")
+        Text("1000")
+            .font(.title)
     }
-    .accessibility(label: Text(labels[selectedPicture]))
-    .accessibility(removeTraits: .isImage)
-    .accessibility(addTraits: .isButton)
+    .accessibilityElement(children: .combine)    // 一个group会一9读出来
+
+    //或者
+    //.accessibilityElement(children: .ignore)
+    //.accessibility(label: Text("Your score is 1000"))
+
   }
 }
 
